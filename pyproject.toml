@@ -1,0 +1,14 @@
+[project]
+name = "smartresume"
+version = "0.1.0"
+description = "A smart tool to convert Markdown-based resumes to beautifully formatted PDFs using Pandoc and LaTeX templates"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pypandoc>=1.15",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+]

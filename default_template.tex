@@ -1,0 +1,183 @@
+% Resume Template for Pandoc Markdown to PDF Conversion
+
+% Document class: article with 11pt font size
+\documentclass[11pt]{article}
+
+% ============================================================================
+% PACKAGE IMPORTS
+% ============================================================================
+
+% Page layout and margins
+\usepackage{geometry}
+
+% Font and text formatting
+\usepackage{fontspec}                 % Allows custom fonts (requires XeLaTeX or LuaLaTeX)
+\usepackage{microtype}                % Improves text spacing and readability
+\usepackage{titlesec}                 % Customize section headings
+\usepackage{enumitem}                 % Enhanced list formatting
+
+% Colors and graphics
+\usepackage{xcolor}                   % Define and use colors
+\usepackage{graphicx}                 % Include images if needed
+
+% Links and URLs
+\usepackage{hyperref}                 % Clickable links and URLs
+\usepackage{url}                      % Better URL formatting
+
+% Table formatting
+\usepackage{tabularx}                 % Advanced table formatting
+\usepackage{array}                    % Enhanced array and table features
+
+% ============================================================================
+% FONT CONFIGURATION
+% ============================================================================
+
+% Set main font (requires system fonts or font files)
+% Comment out if you don't have these fonts installed
+\setmainfont{Gentium Plus}[
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+    ItalicFont = *-Italic
+]
+
+% ============================================================================
+% COLOR DEFINITIONS
+% ============================================================================
+
+\definecolor{darkblue}{RGB}{0, 51, 102}      % Dark blue for headings
+\definecolor{mediumgray}{RGB}{102, 102, 102}  % Medium gray for dates/details
+\definecolor{lightgray}{RGB}{240, 240, 240}   % Light gray for subtle backgrounds
+
+% ============================================================================
+% HYPERLINK CONFIGURATION
+% ============================================================================
+
+\hypersetup{
+    colorlinks=true,        % Color links instead of boxes
+    linkcolor=darkblue,     % Internal link color
+    urlcolor=darkblue,      % URL color
+    citecolor=darkblue,     % Citation color
+    filecolor=darkblue,     % File link color
+    pdfborder={0 0 0}       % Remove border around links
+}
+
+% ============================================================================
+% PAGE LAYOUT SETTINGS
+% ============================================================================
+
+\pagestyle{empty}           % Remove page numbers and headers
+\setlength{\parindent}{0pt} % Remove paragraph indentation
+\setlength{\parskip}{6pt}   % Add space between paragraphs
+
+% ============================================================================
+% SECTION HEADING CUSTOMIZATION
+% ============================================================================
+
+% Customize section headings (# in markdown)
+\titleformat{\section}
+    {\Large\bfseries\color{darkblue}}  % Font size, weight, and color
+    {}                                  % No numbering
+    {0em}                              % No spacing before title
+    {}                                 % No additional formatting
+    [\titlerule]                       % Add horizontal line after title
+
+% Customize subsection headings (## in markdown)
+\titleformat{\subsection}
+    {\large\bfseries}                  % Font size and weight
+    {}                                 % No numbering
+    {0em}                             % No spacing before title
+    {}                                % No additional formatting
+    [\vspace{-0.5em}\textcolor{mediumgray}\dotfill]         % Add dotted line after title
+
+% Customize subsubsection headings (### in markdown)
+\titleformat{\subsubsection}
+    {\normalsize\bfseries}            % Normal size, bold
+    {}                                % No numbering
+    {0em}                            % No spacing before title
+    {}                               % No additional formatting
+    [\vspace{-0.5em}\textcolor{mediumgray}\dotfill]         % Add dotted line after title
+
+% Adjust spacing around section headings
+\titlespacing*{\section}{0pt}{12pt}{6pt}        % left, before, after
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}      % left, before, after
+\titlespacing*{\subsubsection}{0pt}{6pt}{3pt}   % left, before, after
+
+% ============================================================================
+% LIST FORMATTING
+% ============================================================================
+
+% Customize bullet points and numbered lists
+\setlist[itemize]{
+    leftmargin=*,           % Align with text
+    nosep,                  % Reduce spacing between items
+    before={\vspace{-0.5em}}, % Reduce space before list
+    after={\vspace{0.5em}}  % Add space after list
+}
+
+\setlist[enumerate]{
+    leftmargin=*,           % Align with text
+    nosep,                  % Reduce spacing between items
+    before={\vspace{-0.5em}}, % Reduce space before list
+    after={\vspace{0.5em}}  % Add space after list
+}
+
+% ============================================================================
+% PANDOC VARIABLES AND CONDITIONALS
+% ============================================================================
+
+% These variables can be set in your markdown YAML front matter to customize appearance and override defaults
+
+% Font customization
+$if(mainfont)$
+\setmainfont{$mainfont$}
+$endif$
+
+$if(fontsize)$
+\renewcommand{\normalsize}{\fontsize{$fontsize$}{$fontsize$pt}\selectfont}
+$endif$
+
+% Page margins
+$if(margin)$
+\geometry{margin=$margin$}
+$elseif(top-margin)$
+\geometry{top=$top-margin$}
+$elseif(bottom-margin)$
+\geometry{bottom=$bottom-margin$}
+$elseif(left-margin)$
+\geometry{left=$left-margin$}
+$elseif(right-margin)$
+\geometry{right=$right-margin$}
+$else$
+\geometry{margin=1in}  % Default margin
+$endif$
+
+% Section title customization
+$if(title-color)$
+\titleformat{\section}
+    {\Large\bfseries\color{$title-color$}}
+    {}
+    {0em}
+    {}
+    [\titlerule]
+$endif$
+
+% ============================================================================
+% DOCUMENT BEGINS HERE
+% ============================================================================
+
+\begin{document}
+
+% ============================================================================
+% MAIN CONTENT
+% ============================================================================
+
+% This is where pandoc will insert your markdown content
+% The markdown will be converted to LaTeX automatically
+
+$body$
+
+% ============================================================================
+% DOCUMENT ENDS HERE
+% ============================================================================
+
+\end{document}

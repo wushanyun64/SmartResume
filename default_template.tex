@@ -27,6 +27,41 @@
 % Table formatting
 \usepackage{tabularx}                 % Advanced table formatting
 \usepackage{array}                    % Enhanced array and table features
+\usepackage{longtable}                % Tables that can break across pages
+\usepackage{booktabs}                 % Professional table formatting
+
+% Code formatting
+\usepackage{fancyvrb}                 % Enhanced verbatim environments
+\usepackage{listings}                 % Code syntax highlighting (optional)
+
+% ============================================================================
+% PANDOC COMPATIBILITY COMMANDS
+% ============================================================================
+
+% Define \tightlist command
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Define \passthrough for inline code
+\providecommand{\passthrough}[1]{#1}
+
+% Define commands for handling code blocks
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+  commandchars=\\\{\},
+  breaklines=true,
+  breakanywhere=true
+}
+
+% Define commands for quote blocks
+\providecommand{\quote}[1]{\begin{quote}#1\end{quote}}
+
+% Ensure compatibility with pandoc table generation
+\providecommand{\toprule}{\hline}
+\providecommand{\midrule}{\hline}
+\providecommand{\bottomrule}{\hline}
+
+% Handle strikethrough text (if supported)
+\providecommand{\st}[1]{\sout{#1}}
 
 % ============================================================================
 % FONT CONFIGURATION
@@ -58,7 +93,8 @@
     urlcolor=darkblue,      % URL color
     citecolor=darkblue,     % Citation color
     filecolor=darkblue,     % File link color
-    pdfborder={0 0 0}       % Remove border around links
+    pdfborder={0 0 0},      % Remove border around links
+    breaklinks=true         % Allow links to break across lines
 }
 
 % ============================================================================
@@ -95,7 +131,6 @@
     {}                                % No numbering
     {0em}                            % No spacing before title
     {}                               % No additional formatting
-    [\vspace{-0.5em}\textcolor{mediumgray}\dotfill]         % Add dotted line after title
 
 % Adjust spacing around section headings
 \titlespacing*{\section}{0pt}{12pt}{6pt}        % left, before, after
@@ -120,6 +155,44 @@
     before={\vspace{-0.5em}}, % Reduce space before list
     after={\vspace{0.5em}}  % Add space after list
 }
+
+% ============================================================================
+% CODE BLOCK FORMATTING
+% ============================================================================
+
+% Style for code blocks
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
 % ============================================================================
 % PANDOC VARIABLES AND CONDITIONALS

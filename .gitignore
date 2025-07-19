@@ -9,5 +9,5 @@ wheels/
 # Virtual environments
 .venv
 
-markdown/personal_resume.md
-output/personal_resume.pdf
+markdown/resume.md
+output/resume.pdf

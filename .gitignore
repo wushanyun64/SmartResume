@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+markdown/personal_resume.md
+output/personal_resume.pdf

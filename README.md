@@ -83,19 +83,32 @@ uv sync
 
 2. **Run the converter**:
 
-   if you instralled the dependencies with pip:
+   Using default input/output paths:
    
    ```bash
+   # With pip installation
    python main.py
    
-   ```
-   or if you installed the dependencies with uv:
-   
-   ```bash
+   # Or with uv
    uv run main.py
    ```
 
 3. **Output**: The generated PDF will be saved to `output/resume.pdf`.
+
+### Custom Input/Output Files
+
+You can specify custom input and output file paths using command-line arguments:
+
+```bash
+# Using short options
+python main.py -i path/to/your/resume.md -o path/to/output.pdf
+
+# Using long options
+python main.py --input custom_resume.md --output custom_output.pdf
+
+# With uv
+uv run main.py -i markdown/custom.md -o output/custom.pdf
+```
 
    Here is an example PDF resume with the default template:
 
